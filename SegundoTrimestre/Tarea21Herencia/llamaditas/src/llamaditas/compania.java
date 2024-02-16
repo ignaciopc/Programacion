@@ -5,8 +5,10 @@
 package llamaditas;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.Buffer;
 
@@ -24,7 +26,7 @@ public class compania {
         for (int i = 0; i < cliente.length; i++) {
             cliente[i] = null;
         }
-            
+
         int contador = 0;
         String linea = "";
         BufferedReader br = new BufferedReader(new FileReader(f));
@@ -41,11 +43,46 @@ public class compania {
                 }
                 linea = br.readLine();
             }
+
         } catch (IOException e) {
             throw e;
         } finally {
-            br.close();
+       br.close();
+
         }
+    }
+
+    public void aniadirCliente(movil m) throws mismotelefono {
+        boolean bandera = false;
+        try {
+            for (int i = 0; i < cliente.length; i++) {
+                if (cliente[i] == m) {
+                    throw new mismotelefono();
+                } else if (cliente[i] == null && bandera != true) {
+                    cliente[i] = m;
+                    bandera = true;
+                }
+            }
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw e;
+        }
+
+    }
+
+    public void aniadiraltxt(String txt) throws IOException {
+        BufferedWriter wr = new BufferedWriter(new FileWriter(txt));
+
+        for (int i = 0; i < cliente.length; i++) {
+            if (cliente[i] != null) {
+                wr.write(cliente[i].getNumero() + ";");
+                wr.write(cliente[i].getTiempollamada() + ";");
+                wr.write(cliente[i].getTarifa() + ";");
+                wr.write(cliente[i].getTarificados()+"\n");
+
+            }
+        }
+        wr.close();
     }
 
     @Override

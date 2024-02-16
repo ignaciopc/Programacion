@@ -57,6 +57,7 @@ public class movil extends terminal {
     @Override
 
     public String toString() {
+        pagarLlamadas();
         return super.toString()+" tarifa=" + tarifa + ", tarificados=" + getTarificados();
     }
 

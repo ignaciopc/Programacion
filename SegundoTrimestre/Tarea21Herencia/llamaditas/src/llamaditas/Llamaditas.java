@@ -32,12 +32,25 @@ public class Llamaditas {
          */
         try {
             compania vodafone = new compania("./src/llamaditas/numerosDeTelefono.txt");
-            System.out.println(vodafone);
+              compania orange = new compania("./src/llamaditas/numerosDeTelefono.txt");
+
+            movil m2 = new movil("123", "129");
+            movil m0 = new movil("124", "129");
+            movil m1 = new movil("127", "129");
+
+            orange.aniadirCliente(m2);
+            orange.aniadirCliente(m0);
+            orange.aniadirCliente(m1);
+             System.out.println(orange);
+             orange.aniadiraltxt("./src/llamaditas/numerosDeTelefono.txt");
 
         } catch (IOException e) {
-
+            
+        }catch( ArrayIndexOutOfBoundsException r){
+            System.out.println("YA ESTA LLENA");
+        }catch(mismotelefono y){
         }
 
     }
-
+    
 }

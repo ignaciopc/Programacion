@@ -35,6 +35,7 @@ public class TrasponerFrase {
                         bw1.write(total.charAt(i - 1));
                     }
                 }
+                bw1.write("\n");
                 linea = br.readLine();
             }
 
