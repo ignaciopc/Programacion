@@ -15,15 +15,14 @@ public class Tmlad {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        String linea="taltaltal";
+        String linea="mellamoloko";
         String cadena[] = new String[9] ;
         String l="";
         int contador=0;      
 
-        for (int i = 0; i < 10; i++) {
-          System.out.println(cadena[i]);
-
-        }
+        System.out.println(linea.substring(0, 2));
+        
+       
     }
     
 }

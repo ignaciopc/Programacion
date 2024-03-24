@@ -22,15 +22,16 @@ public class almacen implements almacenamiento {
     producto todo[] = new producto[100];
     String prod[];
 
-    public almacen(String f) throws FileNotFoundException, IOException {
+    public almacen(String f) throws FileNotFoundException, IOException,aExcepcion {
         producto p;
         int contador = 0;
         BufferedReader br = new BufferedReader(new FileReader(f));
-        String linea = "";
+        String   linea = br.readLine();
 
-        try {
-            while (linea != null) {
-                if (!linea.equals("")) {
+        
+            do {
+                if (linea!= null) {
+                  
                     prod = linea.split(";");
                     if (prod[0].substring(0, 2).equals("FE")) {
                         p = new ferreteria(prod[1], Integer.parseInt(prod[2]), Double.parseDouble(prod[3]), Double.parseDouble(prod[4]), Double.parseDouble(prod[5]), Double.parseDouble(prod[6]), Double.parseDouble(prod[7]));
@@ -47,19 +48,13 @@ public class almacen implements almacenamiento {
                         todo[contador] = p;
                         contador++;
                         linea = br.readLine();
-                    } else {
-                        linea = br.readLine();
-
-                    }
-                } else {
-                    linea = br.readLine();
-
+                    } 
                 }
-            }
-        }  finally {
+            } while (linea != null);
+
             br.close();
 
-        }
+        
 
     }
 
@@ -73,8 +68,7 @@ public class almacen implements almacenamiento {
                 bandera = true;
             }
             cont++;
-
-        } while (bandera != true);
+        } while (!bandera);
     }
 
     @Override
@@ -94,6 +88,7 @@ public class almacen implements almacenamiento {
             BufferedWriter bw = new BufferedWriter(new FileWriter(fichero));
 
             for (int i = 0; i < todo.length; i++) {
+
                 if (todo[i] != null) {
                     bw.write(todo[i].linea() + "\n");
 

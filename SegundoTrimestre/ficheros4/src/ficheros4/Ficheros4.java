@@ -17,12 +17,7 @@ public class Ficheros4 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        File f = new File(".");
-        String fichero[] = f.list();
-        
-        for (String ficheract : fichero) {
-            System.out.println(ficheract);
-        }
+
     }
     
 }
